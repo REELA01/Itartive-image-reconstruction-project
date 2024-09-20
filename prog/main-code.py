@@ -3,8 +3,8 @@ from skimage.transform import radon, iradon, rescale
 import numpy as np
 import matplotlib.pyplot as plt
 from IPython.display import display, clear_output
-# for density
-activity_level = 0.1;
+
+activity_level = 0.1; # for density
 # accessing ture object
 true_object = shepp_logan_phantom();
 true_object = rescale(activity_level * true_object, 0.5)
@@ -25,6 +25,7 @@ axs [0, 1].imshow(sinogram.T, cmap='Greys_r');
 axs [0, 1].set_title('Sinogram')
 
 # applying the melem algrorithm
+# for mlem algorithm -> x^(k+1) = (x^k/A^T) A^T (m/Ax^k)
 
 # iteration 0 (k = 0) first iteration
 mlem_rec = np.ones(true_object.shape);
