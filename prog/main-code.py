@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from IPython.display import display, clear_output
 # for density
 activity_level = 0.1;
-# accssesinf ture object
+# accessing ture object
 true_object = shepp_logan_phantom();
 true_object = rescale(activity_level * true_object, 0.5)
 # six figures 2 rows 3 cloumns , 20 width and 10 length
@@ -14,8 +14,8 @@ fig, axs = plt.subplots (2, 3, figsize=(20, 10))
 axs [0, 0].imshow(true_object, cmap='Greys_r');
 axs [0, 0].set_title('Object')
 
-# Generate sinogram .
-#using numby to go thruogh fron 0 degree to 180 degree
+# generate sinogram .
+# using numby to go thruogh fron 0 degree to 180 degree
 azi_angles = np.linspace(0.0, 180.0, 180, endpoint=False)
 # apply radon transfrom on true object for mlutiple angles for the entire circular phantum
 sinogram = radon(true_object, azi_angles, circle=False)
@@ -28,7 +28,7 @@ axs [0, 1].set_title('Sinogram')
 
 # iteration 0 (k = 0) first iteration
 mlem_rec = np.ones(true_object.shape);
- # all ones array of sinogram for back projuction A^T 
+# all ones array of sinogram for back projuction A^T 
 sino_ones = np.ones (sinogram.shape)
 # applying backprojuction by using iradon
 sens_image = iradon(sino_ones, azi_angles, circle=False, filter_name=None)
